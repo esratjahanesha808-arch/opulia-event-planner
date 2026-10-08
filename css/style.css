@@ -1790,21 +1790,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* YouTube iframe video fixes */
-.hero-video-wrap {
-    overflow: hidden;
-}
-
-iframe.hero-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 56.25vw; /* 16:9 aspect ratio */
-    min-height: 100vh;
-    min-width: 177.78vh; /* 16:9 aspect ratio */
-    pointer-events: none; /* Prevents clicking/pausing the hero video */
-}
 
 iframe.portfolio-video {
     width: 100%;
