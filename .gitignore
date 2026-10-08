@@ -1,0 +1,10 @@
+# Ignore local media files as they are hosted on Cloudinary and YouTube
+asset/*.mp4
+hero vedio/
+asset/*.png
+mehendi/*.png
+asset/*.jpg
+asset/cetagory/
+asset/portfolio/
+asset/testimonials images/
+mehendi/*.jpg

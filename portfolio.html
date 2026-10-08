@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Opulia | Events We've Had the Honour to Design</title>
+    <meta name="description" content="Browse Opulia's portfolio of signature weddings, cultural ceremonies, milestone birthdays, and bespoke celebrations. Every event curated with intention.">
+    <meta property="og:title" content="Portfolio — Opulia">
+    <meta property="og:description" content="Real celebrations. Immaculate design. Browse our portfolio of bespoke events across cultures, scales, and destinations.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body class="portfolio-page">
+
+<!-- ====================================================
+     HEADER
+     ==================================================== -->
+<header class="site-header inner-page-header" id="site-header">
+    <div class="nav-wrap">
+        <nav class="main-nav" aria-label="Primary">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#packages">Packages</a>
+            <a href="portfolio.html" class="nav-active">Portfolio</a>
+            <a href="index.html#about">About</a>
+        </nav>
+        <a href="index.html" class="brand-logo" aria-label="Opulia homepage">OPULIA</a>
+        <div class="nav-right">
+            <a href="contact.html" class="nav-cta-btn">Book a Consultation</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="index.html#services" class="m-link">Services</a>
+    <a href="index.html#packages" class="m-link">Packages</a>
+    <a href="portfolio.html" class="m-link">Portfolio</a>
+    <a href="index.html#about" class="m-link">About</a>
+    <a href="contact.html" class="m-cta">Book a Consultation</a>
+</nav>
+
+
+<!-- ====================================================
+     1. HERO
+     Green background loads first with centered title.
+     After a delay, ONE full-height scrolling strip fades in.
+     ==================================================== -->
+<section class="pf-hero" id="pf-hero" aria-label="Portfolio">
+
+    <!-- Full-height scrolling image strip (hidden initially, fades in via JS) -->
+    <div class="pf-hero-strip-wrap" id="pfStripWrap" aria-hidden="true">
+        <div class="pf-hero-strip-row" id="pfStripRow">
+            <div class="pf-strip-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/potfolio-hero1.jpg" alt="" loading="eager"></div>
+            <div class="pf-strip-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/potfolio-hero2.jpg" alt="" loading="eager"></div>
+            <div class="pf-strip-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/potfolio-hero3.jpg" alt="" loading="eager"></div>
+            <div class="pf-strip-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/potfolio-hero4.jpg" alt="" loading="eager"></div>
+            <!-- Seamless loop duplicates -->
+            <div class="pf-strip-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/potfolio-hero1.jpg" alt="" aria-hidden="true"></div>
+            <div class="pf-strip-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/potfolio-hero2.jpg" alt="" aria-hidden="true"></div>
+            <div class="pf-strip-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/potfolio-hero3.jpg" alt="" aria-hidden="true"></div>
+            <div class="pf-strip-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/potfolio-hero4.jpg" alt="" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <!-- Dark overlay — sits between strip and text for readability -->
+    <div class="pf-hero-overlay"></div>
+
+    <!-- Centered editorial text — always on top, visible first -->
+    <div class="pf-hero-content">
+        <span class="pf-hero-label" id="pfHeroLabel">Our Work</span>
+        <h1 class="pf-hero-title" id="pfHeroTitle">
+            Events We've Had<br>the Honour to Design
+        </h1>
+        <p class="pf-hero-sub" id="pfHeroSub">
+            Every image here is a real moment — curated, designed, and executed by Opulia.
+        </p>
+    </div>
+
+</section>
+
+
+<!-- ====================================================
+     2. PARALLAX COLLAGE — 3 Columns, Green Background
+     Left/Right move one way, Middle moves opposite
+     ==================================================== -->
+<section class="pf-parallax-collage" id="pf-parallax-collage" aria-label="Portfolio Gallery">
+    <div class="parallax-col parallax-down" id="colLeft">
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/be-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img5.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img5.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img5.jpg" alt=""></div>
+        <!-- Duplicates for length -->
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/be-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img5.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img5.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img5.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img1.jpg" alt=""></div>
+        <!-- Triple duplicates for large screens -->
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/be-img1.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img5.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img5.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img5.jpg" alt=""></div>
+    </div>
+
+    <div class="parallax-col parallax-up" id="colMiddle">
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/be-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img6.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img6.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img6.jpg" alt=""></div>
+        <!-- Duplicates for length -->
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/be-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img6.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img6.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img6.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img2.jpg" alt=""></div>
+        <!-- Triple duplicates for large screens -->
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/be-img2.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img6.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img6.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img6.jpg" alt=""></div>
+    </div>
+
+    <div class="parallax-col parallax-down" id="colRight">
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/be-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img4.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img4.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img4.jpg" alt=""></div>
+        <!-- Duplicates for length -->
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/be-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img4.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img4.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img4.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img3.jpg" alt=""></div>
+        <!-- Triple duplicates for large screens -->
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/be-img3.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/w-img4.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img4.jpg" alt=""></div>
+        <div class="p-item"><img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/b-img4.jpg" alt=""></div>
+    </div>
+</section>
+
+
+<!-- ====================================================
+     4. THE TRUTH IS — Full-bleed bg, centred, no button
+     ==================================================== -->
+<section class="pf-truth-section" id="pf-truth" aria-label="The truth is">
+    <div class="pf-truth-bg" style="background-image: url('https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/wedding-hero.png');"></div>
+    <div class="pf-truth-overlay"></div>
+    <div class="pf-truth-content">
+        <div class="pf-truth-inner">
+            <span class="pf-truth-label reveal">The Truth Is</span>
+            <h2 class="pf-truth-heading reveal rd1">
+                An Event Isn't<br>Just a Moment.
+                <em>It's a Memory<br>You Live Inside Forever.</em>
+            </h2>
+            <p class="pf-truth-body reveal rd2">
+                We don't count down to the day — we design for the feeling that will linger long after it. Every detail, every light, every moment of stillness is placed there with intention. That is the Opulia difference.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ====================================================
+     5. TESTIMONIALS
+     ==================================================== -->
+<section class="home-testi-section pf-testi-section" id="pf-testimonials" aria-label="Client Testimonials">
+    <div class="ht-ticker-wrap" aria-hidden="true">
+        <div class="ht-ticker">
+            <span class="ht-ticker-item">KIND WORDS</span>
+            <span class="ht-ticker-knot">&amp;</span>
+            <span class="ht-ticker-item">TESTIMONIALS</span>
+            <span class="ht-ticker-knot">&amp;</span>
+            <span class="ht-ticker-item">KIND WORDS</span>
+            <span class="ht-ticker-knot">&amp;</span>
+            <span class="ht-ticker-item">TESTIMONIALS</span>
+            <span class="ht-ticker-knot">&amp;</span>
+            <span class="ht-ticker-item">KIND WORDS</span>
+            <span class="ht-ticker-knot">&amp;</span>
+            <span class="ht-ticker-item">TESTIMONIALS</span>
+            <span class="ht-ticker-knot">&amp;</span>
+            <span class="ht-ticker-item">KIND WORDS</span>
+            <span class="ht-ticker-knot">&amp;</span>
+            <span class="ht-ticker-item">TESTIMONIALS</span>
+            <span class="ht-ticker-knot">&amp;</span>
+        </div>
+    </div>
+    <div class="ht-inner">
+        <div class="ht-left" id="htLeft">
+            <div class="ht-arch-wrap" id="htArchWrap">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/testimonial1-img1.jpg" alt="Client portrait" class="ht-arch-img" id="htArchImg">
+            </div>
+            <div class="ht-quote-box" id="htQuoteBox">
+                <blockquote id="htQuote">On our wedding day I didn't once think about logistics. I was simply present. Opulia turned our vision into something that felt too beautiful to be real — yet it was entirely ours.</blockquote>
+                <div class="ht-author-line">
+                    <span class="ht-author" id="htAuthor">— AYESHA + ZAIN</span>
+                </div>
+            </div>
+            <div class="ht-nav-row">
+                <button class="ht-nav-arrow ht-nav-prev" id="htPrev" aria-label="Previous testimonial">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <button class="ht-nav-arrow ht-nav-next" id="htNext" aria-label="Next testimonial">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+        <div class="ht-right" id="htRight">
+            <div class="ht-slider-track" id="htSliderTrack">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/testimonial1-img2.jpg" alt="Celebration moment" class="ht-photo ht-photo-current" id="htPhoto">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ====================================================
+     6. CTA
+     ==================================================== -->
+<section class="cta-section pf-cta-section" id="pf-cta" aria-label="Book a consultation">
+    <div class="s-inner">
+        <span class="s-label reveal">Let's Create Together</span>
+        <h2 class="reveal rd1">Your Event Begins<br>With One Conversation</h2>
+        <p class="cta-body reveal rd2">Whether you have a clear vision or just an idea of how you want it to feel — we'll take it from there.</p>
+        <div class="cta-actions reveal rd3">
+            <a href="contact.html" class="btn btn-green" id="pf-cta-primary">Book a Consultation</a>
+            <a href="contact.html" class="btn btn-outline-green" id="pf-cta-secondary">Tell Us About Your Event</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ====================================================
+     7. FOOTER
+     ==================================================== -->
+<footer class="site-footer" aria-label="Footer">
+    <div class="s-inner">
+        <div class="footer-top">
+            <div>
+                <span class="foot-brand-logo">OPULIA</span>
+                <p class="foot-brand-desc">A premium event design and planning studio. Crafting bespoke celebrations for those who understand that how an event feels is everything.</p>
+            </div>
+            <div class="foot-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="index.html#services">Signature Weddings</a></li>
+                    <li><a href="index.html#services">Cultural Celebrations</a></li>
+                    <li><a href="index.html#services">Milestone Events</a></li>
+                    <li><a href="index.html#services">Destination Planning</a></li>
+                    <li><a href="index.html#services">Venue Styling</a></li>
+                    <li><a href="index.html#services">Private Events</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="index.html#about">About Opulia</a></li>
+                    <li><a href="index.html#process">Our Process</a></li>
+                    <li><a href="index.html#packages">Packages</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h5>Connect</h5>
+                <div class="foot-social">
+                    <a href="#" class="foot-social-link" aria-label="Instagram">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                        Instagram
+                    </a>
+                    <a href="#" class="foot-social-link" aria-label="WhatsApp">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        WhatsApp
+                    </a>
+                    <a href="mailto:hello@opulia.com" class="foot-social-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        hello@opulia.com
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Opulia. All rights reserved.</p>
+            <p>Designed with intention. Built for celebration.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/portfolio.js"></script>
+</body>
+</html>

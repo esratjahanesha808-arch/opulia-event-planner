@@ -1,0 +1,59 @@
+/* ==============================================
+   design-system.css
+   Core tokens only — no component styles
+   ============================================== */
+
+:root {
+    --green:      #17230f;
+    --green-2:    #243318;
+    --white:      #F9F8F6;
+    --off-white:  #F0EFEA;
+    --gold:       #c8a96e;
+    --gold-dim:   rgba(200,169,110,0.3);
+    --text-on-green: rgba(249,248,246,0.68);
+
+    --font-serif:   'Bodoni Moda', 'Playfair Display', Georgia, serif;
+    --font-heading: var(--font-serif);
+    --font-sans:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-body:    var(--font-sans);
+    --font-mark:    'Plus Jakarta Sans', sans-serif;
+
+    --sp-xs:  0.5rem;
+    --sp-sm:  1rem;
+    --sp-md:  2rem;
+    --sp-lg:  4rem;
+    --sp-xl:  7rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--white);
+    color: var(--green);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+}
+
+img { display: block; max-width: 100%; }
+a   { text-decoration: none; color: inherit; }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}

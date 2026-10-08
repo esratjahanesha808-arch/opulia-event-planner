@@ -1,0 +1,1171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haldi Ceremonies — Opulia</title>
+    <meta name="description" content="Opulia designs premium haldi celebrations — curated with artistry, executed with precision. From intimate dinners to grand parties.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/service-page.css">
+    <style>
+        /* ══════════════════════════════════════════════════
+           BIRTHDAY PAGE — OVERRIDES & NEW COMPONENTS
+           ══════════════════════════════════════════════════ */
+
+        /* ── HERO: full-screen image with centred text ── */
+        .haldi-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .haldi-hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .haldi-hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+        .haldi-hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background:
+                linear-gradient(to bottom, rgba(10,18,8,0.52) 0%, rgba(10,18,8,0.62) 100%);
+        }
+        .haldi-hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .haldi-hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+            font-weight: 500;
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 40px rgba(10,18,8,0.8);
+            /* Drop-from-top animation */
+            opacity: 0;
+            transform: translateY(-60px);
+            animation: heroTitleDrop 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+        }
+        @keyframes heroTitleDrop {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── DESCRIPTION: green bg, bold text ── */
+        .haldi-desc-section {
+            background: #1d2d12;
+            padding: 8rem 6%;
+        }
+        .haldi-desc-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        .haldi-desc-left { }
+        .haldi-desc-left .s-label {
+            color: var(--gold);
+            border-color: rgba(200,169,110,0.3);
+        }
+        .haldi-desc-left h2 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: #F9F8F6;
+            margin-bottom: 1.8rem;
+            margin-top: 1rem;
+            font-weight: 700;
+        }
+        .haldi-desc-body {
+            font-size: 1rem;
+            color: rgba(249,248,246,0.9);
+            line-height: 1.85;
+            margin-bottom: 1.4rem;
+            font-weight: 500;
+        }
+        .haldi-desc-highlights {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(200,169,110,0.25);
+        }
+        .haldi-desc-highlights li {
+            display: flex;
+            gap: 0.9rem;
+            align-items: flex-start;
+            font-size: 0.92rem;
+            color: rgba(249,248,246,0.88);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+        .haldi-desc-highlights li::before {
+            content: '✦';
+            color: var(--gold);
+            font-size: 0.5rem;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        .haldi-desc-right {
+            position: sticky;
+            top: 100px;
+        }
+        .haldi-desc-img-wrap { position: relative; }
+        .haldi-desc-img-main {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            border: 4px solid rgba(200,169,110,0.2);
+        }
+        .haldi-desc-img-accent {
+            position: absolute;
+            bottom: -2.5rem;
+            right: -2.5rem;
+            width: 52%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border: 5px solid #1d2d12;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+        }
+
+        /* ── PROCESS: same as homepage ── */
+        .haldi-process-section {
+            background: var(--white);
+            height: 500vh;
+            position: relative;
+        }
+        .haldi-process-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+        }
+        .haldi-process-inner {
+            width: 100%;
+            max-width: 1440px;
+            padding: 0 6%;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+        .haldi-process-head .s-label {
+            color: var(--gold);
+        }
+        .haldi-process-head h2 {
+            color: var(--green);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            margin-top: 0.6rem;
+            line-height: 1.1;
+        }
+        .haldi-process-timeline-wrap {
+            position: relative;
+            padding-top: 3rem;
+        }
+        .haldi-hpt-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .haldi-hpt-step {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+            opacity: 0.35;
+            transition: opacity 0.5s ease;
+        }
+        .haldi-hpt-step.active { opacity: 1; }
+        .haldi-hpt-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid #2d4a1a;
+            background: var(--white);
+            transition: background 0.4s ease, border-color 0.4s ease;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 3;
+            margin-bottom: 0.5rem;
+        }
+        .haldi-hpt-dot.active {
+            background: #2d4a1a;
+            border-color: #2d4a1a;
+        }
+        .haldi-hpt-step-num {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .haldi-hpt-step h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: #2d4a1a;
+            line-height: 1.2;
+        }
+        .haldi-hpt-step p {
+            font-size: 0.82rem;
+            color: rgba(23,35,15,0.5);
+            line-height: 1.7;
+            max-width: 240px;
+        }
+        .haldi-hpt-step.active p { color: rgba(23,35,15,0.7); }
+        .haldi-hpt-track {
+            position: absolute;
+            top: calc(3rem + 7px);
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(23,35,15,0.1);
+            z-index: 1;
+        }
+        .haldi-hpt-fill {
+            height: 100%;
+            width: 0%;
+            background: #2d4a1a;
+            transition: width 0.05s linear;
+        }
+
+        /* ── OUR WORK: collage gallery ── */
+        .haldi-work-section {
+            background: var(--green);
+            padding: 8rem 6%;
+        }
+        .haldi-work-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .haldi-work-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3.5rem;
+        }
+        .haldi-work-head-left .s-label {
+            color: var(--gold);
+        }
+        .haldi-work-head-left h2 {
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            color: var(--white);
+            margin-top: 0.6rem;
+        }
+        .haldi-work-head-left p {
+            font-size: 0.86rem;
+            color: var(--text-on-green);
+            margin-top: 0.8rem;
+            max-width: 320px;
+            line-height: 1.65;
+        }
+        .haldi-work-head-right {
+            display: flex;
+            align-items: center;
+        }
+        .haldi-view-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2rem;
+            border: 1px solid rgba(200,169,110,0.4);
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--white);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            background: transparent;
+        }
+        .haldi-view-more-btn:hover {
+            background: var(--gold);
+            color: var(--green);
+            border-color: var(--gold);
+        }
+        .haldi-view-more-btn .arrow { margin-left: auto; transition: transform 0.3s; }
+        .haldi-view-more-btn:hover .arrow { transform: translateX(4px); }
+
+        /* ── Image Collage Grid — matches reference layout 3 ── */
+        .haldi-collage {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            grid-template-rows: 300px 300px 300px;
+            gap: 8px;
+            /* Named areas:
+               a = big left (spans rows 1+2)
+               b = top-mid, c = top-right
+               d = mid-mid, e = mid-right
+               f = bottom-left (wide), g = bottom-right (wide)
+            */
+            grid-template-areas:
+                "a b c"
+                "a d e"
+                "f f g";
+        }
+        .haldi-collage-item {
+            overflow: hidden;
+            position: relative;
+            min-height: 0;
+        }
+        .haldi-collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.3, 1);
+        }
+        .haldi-collage-item:hover img { transform: scale(1.05); }
+        .haldi-col-a { grid-area: a; }
+        .haldi-col-b { grid-area: b; }
+        .haldi-col-c { grid-area: c; }
+        .haldi-col-d { grid-area: d; }
+        .haldi-col-e { grid-area: e; }
+        .haldi-col-f { grid-area: f; }
+        .haldi-col-g { grid-area: g; }
+
+        /* ── PACKAGES ── */
+        /* Inherits .svc-packages-section, .svc-pkg-card etc. */
+        /* Food box as list */
+        .haldi-pkg-food-box {
+            background: rgba(200,169,110,0.07);
+            border: 1px solid rgba(200,169,110,0.18);
+            border-left: 3px solid var(--gold);
+            padding: 1.1rem 1.2rem;
+        }
+        .haldi-pkg-food-title {
+            font-family: var(--font-sans);
+            font-size: 0.63rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .haldi-pkg-food-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .haldi-pkg-food-list li {
+            font-size: 0.78rem;
+            color: rgba(249,248,246,0.72);
+            line-height: 1.5;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .haldi-pkg-food-list li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.1rem;
+            line-height: 1.1;
+        }
+
+        /* ── TESTIMONIALS: 3-card carousel (reference 4) ── */
+        .haldi-testi-section {
+            background: var(--white);
+            padding: 8rem 6%;
+            overflow: hidden;
+        }
+        .haldi-testi-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .haldi-testi-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .haldi-testi-header .s-label { color: var(--gold); }
+        .haldi-testi-header h2 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: var(--green);
+            margin-top: 0.8rem;
+        }
+
+        /* Carousel layout */
+        .haldi-testi-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            position: relative;
+        }
+        
+        .haldi-testi-track-wrap {
+            width: 100%;
+            max-width: 1100px;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        .haldi-testi-track {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            transition: transform 0.4s ease;
+        }
+        
+        .haldi-testi-card {
+            flex: 0 0 320px;
+            background: var(--green);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            opacity: 0.5;
+            transform: scale(0.85);
+        }
+        
+        .haldi-testi-card.active {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
+        
+        .haldi-testi-quote-icon {
+            font-size: 3.5rem;
+            line-height: 1;
+            color: var(--gold);
+            font-family: Georgia, serif;
+            opacity: 0.8;
+            margin-bottom: -1rem;
+        }
+        .haldi-testi-card blockquote {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--white);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .haldi-testi-author-row {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .haldi-testi-avatar {
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            color: var(--white);
+            flex-shrink: 0;
+            font-weight: 600;
+        }
+        .haldi-testi-author-info {
+            text-align: left;
+        }
+        .haldi-testi-author-name {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .haldi-testi-author-meta {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.2rem;
+        }
+
+        /* Navigation */
+        .haldi-testi-arrow {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1px solid rgba(23,35,15,0.1);
+            color: var(--green);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            z-index: 5;
+        }
+        .haldi-testi-arrow:hover {
+            background: var(--green);
+            color: var(--white);
+            border-color: var(--green);
+        }
+        
+        .haldi-testi-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        .haldi-testi-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(23,35,15,0.15);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .haldi-testi-dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+
+        /* ── CTA: white background ── */
+        .haldi-cta-section {
+            background: var(--white);
+            padding: 7rem 6%;
+            text-align: center;
+        }
+        .haldi-cta-section .s-label {
+            color: var(--gold);
+        }
+        .haldi-cta-section h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            color: var(--green);
+            margin: 0.8rem 0 1.2rem;
+        }
+        .haldi-cta-section p {
+            font-size: 0.95rem;
+            color: rgba(23,35,15,0.6);
+            max-width: 440px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.75;
+        }
+        .haldi-cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1100px) {
+            .haldi-desc-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+            .haldi-desc-right { position: static; }
+            .haldi-collage { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 240px 240px; }
+            .haldi-collage-item.tall { grid-row: span 1; }
+            .haldi-testi-layout { flex-direction: column; gap: 3rem; }
+            .haldi-testi-stack-col { width: 100%; }
+            .haldi-work-head { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+        }
+        @media (max-width: 700px) {
+            .haldi-hero-title { font-size: 2.8rem; }
+            .haldi-collage { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .haldi-collage-item { height: 260px; }
+            .haldi-collage-item.wide { grid-column: span 1; }
+            .haldi-process-section { height: auto; }
+            .haldi-process-sticky { position: relative; height: auto; padding: 6rem 0; }
+            .haldi-hpt-steps { flex-wrap: wrap; justify-content: flex-start; gap: 2rem; }
+            .haldi-hpt-step { opacity: 1; flex: 0 0 calc(50% - 1rem); }
+            .haldi-testi-card-front { width: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header inner-page-header" id="site-header">
+    <div class="nav-wrap">
+        <nav class="main-nav" aria-label="Primary">
+            <a href="../index.html#services">Services</a>
+            <a href="../services.html">All Services</a>
+            <a href="../index.html#portfolio">Portfolio</a>
+            <a href="../index.html#about">About</a>
+        </nav>
+        <a href="../index.html" class="brand-logo" aria-label="Opulia homepage">OPULIA</a>
+        <div class="nav-right">
+            <a href="../contact.html" class="nav-cta-btn">Book a Consultation</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="../index.html#services" class="m-link">Services</a>
+    <a href="../services.html" class="m-link">All Services</a>
+    <a href="../index.html#portfolio" class="m-link">Portfolio</a>
+    <a href="../index.html#about" class="m-link">About</a>
+    <a href="../contact.html" class="m-cta">Book a Consultation</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════
+     1. HERO — Full-screen haldi image, centred
+     ═══════════════════════════════════════════════ -->
+<section class="haldi-hero" id="home" aria-label="Haldi Ceremonies Hero">
+    <div class="haldi-hero-bg">
+        <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/haldi-hero.png" alt="Haldi Ceremonies by Opulia" loading="eager">
+    </div>
+    <div class="haldi-hero-overlay"></div>
+    <div class="haldi-hero-content">
+        <h1 class="haldi-hero-title">Your Haldi,<br>Designed to Be Remembered</h1>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     2. DESCRIPTION — Green background, bold text
+     ═══════════════════════════════════════════════ -->
+<section class="haldi-desc-section" aria-label="About Haldi Ceremonies">
+    <div class="haldi-desc-inner">
+        <div class="haldi-desc-left reveal">
+            <span class="s-label">Milestone Events</span>
+            <h2>A Haldi That Feels Like You</h2>
+            <p class="haldi-desc-body">We believe a haldi is not just a date — it's a declaration. Whether you're turning 18, 30, 50 or beyond, Opulia designs haldi celebrations that feel entirely, unmistakably yours.</p>
+            <p class="haldi-desc-body">From intimate candlelit dinners to grand parties with hundreds of guests — we handle every element: venue, florals, lighting, entertainment, cake design, food curation, and on-the-day logistics.</p>
+            <ul class="haldi-desc-highlights">
+                <li>Fully bespoke theme and aesthetic design</li>
+                <li>Venue selection and transformation</li>
+                <li>Floral and lighting direction</li>
+                <li>Entertainment and live performance curation</li>
+                <li>Custom cake and dessert table design</li>
+                <li>Complete event-day coordination</li>
+            </ul>
+        </div>
+        <div class="haldi-desc-right reveal rd1">
+            <div class="haldi-desc-img-wrap">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-decription-img1.jpg" alt="Haldi celebration detail by Opulia" class="haldi-desc-img-main" loading="lazy">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-description-img2.jpg" alt="Haldi celebration detail" class="haldi-desc-img-accent" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     3. PROCESS — Same as homepage (sticky scroll)
+     ═══════════════════════════════════════════════ -->
+<section class="haldi-process-section" id="haldi-process" aria-label="Our Process">
+    <div class="haldi-process-sticky">
+        <div class="haldi-process-inner">
+            <div class="haldi-process-head reveal">
+                <span class="s-label">How We Work</span>
+                <h2>The Haldi<br>Journey</h2>
+            </div>
+            <div class="haldi-process-timeline-wrap" id="haldiProcessTimelineWrap">
+                <div class="haldi-hpt-track">
+                    <div class="haldi-hpt-fill" id="haldiHptFill"></div>
+                </div>
+                <div class="haldi-hpt-steps">
+                    <div class="haldi-hpt-step" data-step="0">
+                        <div class="haldi-hpt-dot" id="haldiDot0"></div>
+                        <div class="haldi-hpt-step-num">01</div>
+                        <h4>The Vision</h4>
+                        <p>We begin with a detailed consultation to understand your personality, your ideal aesthetic, and the feeling you want the evening to create.</p>
+                    </div>
+                    <div class="haldi-hpt-step" data-step="1">
+                        <div class="haldi-hpt-dot" id="haldiDot1"></div>
+                        <div class="haldi-hpt-step-num">02</div>
+                        <h4>The Design</h4>
+                        <p>Mood boards, colour palette, theme direction, venue shortlist, vendor curation. Your haldi identity takes shape.</p>
+                    </div>
+                    <div class="haldi-hpt-step" data-step="2">
+                        <div class="haldi-hpt-dot" id="haldiDot2"></div>
+                        <div class="haldi-hpt-step-num">03</div>
+                        <h4>The Build</h4>
+                        <p>Every vendor is briefed, every timeline locked. Florals, lighting, entertainment and food are all coordinated under one team.</p>
+                    </div>
+                    <div class="haldi-hpt-step" data-step="3">
+                        <div class="haldi-hpt-dot" id="haldiDot3"></div>
+                        <div class="haldi-hpt-step-num">04</div>
+                        <h4>The Day</h4>
+                        <p>You walk in as a guest. We handle every detail invisibly. Your only job is to celebrate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     4. OUR WORK — Image collage, title left / view more right
+     ═══════════════════════════════════════════════ -->
+<section class="haldi-work-section" id="portfolio" aria-label="Our Haldi Work">
+    <div class="haldi-work-inner">
+        <div class="haldi-work-head reveal">
+            <div class="haldi-work-head-left">
+                <span class="s-label">Our Work</span>
+                <h2>Past Haldi<br>Celebrations</h2>
+                <p>Real haldi events curated and executed by Opulia — each one a unique story.</p>
+            </div>
+            <div class="haldi-work-head-right">
+                <a href="../services.html" class="haldi-view-more-btn" id="work-view-more">
+                    View More <span class="arrow">→</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Image collage — reference layout 3: tall left + 2x2 grid + wide bottom row -->
+        <div class="haldi-collage reveal rd1">
+            <!-- a: big tall image, left, spans rows 1+2 -->
+            <div class="haldi-collage-item haldi-col-a">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img1.jpg" alt="Haldi celebration" loading="lazy">
+            </div>
+            <!-- b: top centre -->
+            <div class="haldi-collage-item haldi-col-b">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img2.jpg" alt="Haldi celebration" loading="lazy">
+            </div>
+            <!-- c: top right -->
+            <div class="haldi-collage-item haldi-col-c">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img3.jpg" alt="Haldi celebration" loading="lazy">
+            </div>
+            <!-- d: mid centre -->
+            <div class="haldi-collage-item haldi-col-d">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img4.jpg" alt="Haldi celebration" loading="lazy">
+            </div>
+            <!-- e: mid right -->
+            <div class="haldi-collage-item haldi-col-e">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img5.jpg" alt="Haldi celebration" loading="lazy">
+            </div>
+            <!-- f: bottom wide left (spans 2 cols) -->
+            <div class="haldi-collage-item haldi-col-f">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img6.jpg" alt="Haldi celebration" loading="lazy">
+            </div>
+            <!-- g: bottom right -->
+            <div class="haldi-collage-item haldi-col-g">
+                <img src="https://res.cloudinary.com/numgcgpy/image/upload/q_auto,f_auto/h-img7.jpg" alt="Haldi celebration" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     5. PACKAGES — Haldi-specific
+     ═══════════════════════════════════════════════ -->
+<section class="svc-packages-section" id="packages" aria-label="Haldi Packages">
+    <div class="svc-packages-inner">
+        <div class="svc-packages-head reveal">
+            <span class="s-label">Investment</span>
+            <h2>Haldi Ceremonies <em>Packages</em></h2>
+            <p>Three tiers, each fully customisable. All packages include a complimentary consultation and a curated food experience designed for your celebration.</p>
+        </div>
+        <div class="svc-pkg-grid">
+
+            <!-- PACKAGE 1: The Spark -->
+            <div class="svc-pkg-card reveal" id="pkg-spark">
+                <span class="svc-pkg-tier">Haldi Day Package</span>
+                <h3 class="svc-pkg-name"><em>The Spark</em></h3>
+                <p class="svc-pkg-desc">For hosts who know their vision and need precise execution on the day.</p>
+                <ul class="svc-pkg-list">
+                    <li>Day-of coordination (8 hours)</li>
+                    <li>Venue styling consultation</li>
+                    <li>Vendor briefing and management</li>
+                    <li>Arrival setup and breakdown</li>
+                    <li>Timeline management</li>
+                    <li>Food: canapés, haldi cake & dessert table, finger food platters, mocktail station</li>
+                </ul>
+                <div class="svc-pkg-foot">
+                    <a href="../contact.html" class="btn btn-outline-white" id="pkg-spark-cta">Enquire</a>
+                </div>
+            </div>
+
+            <!-- PACKAGE 2: The Occasion (featured) -->
+            <div class="svc-pkg-card featured reveal rd1" id="pkg-occasion">
+                <div class="svc-pkg-badge">Most Popular</div>
+                <span class="svc-pkg-tier">Full Haldi Experience</span>
+                <h3 class="svc-pkg-name"><em>The Occasion</em></h3>
+                <p class="svc-pkg-desc">End-to-end haldi planning from first concept to final farewell.</p>
+                <ul class="svc-pkg-list">
+                    <li>Concept development and mood boarding</li>
+                    <li>Venue search and negotiation</li>
+                    <li>Complete vendor management</li>
+                    <li>Floral and lighting design direction</li>
+                    <li>Entertainment curation</li>
+                    <li>Guest experience planning</li>
+                    <li>Full event-day team</li>
+                    <li>Food: multi-course dinner, live food station, bespoke haldi cake, dessert table & beverage station</li>
+                </ul>
+                <div class="svc-pkg-foot">
+                    <a href="../contact.html" class="btn btn-white" id="pkg-occasion-cta">Book a Consultation</a>
+                </div>
+            </div>
+
+            <!-- PACKAGE 3: The Statement -->
+            <div class="svc-pkg-card reveal rd2" id="pkg-statement">
+                <span class="svc-pkg-tier">Bespoke Haldi Production</span>
+                <h3 class="svc-pkg-name"><em>The Statement</em></h3>
+                <p class="svc-pkg-desc">No limits. A production designed entirely around your grandest ambitions.</p>
+                <ul class="svc-pkg-list">
+                    <li>Everything in The Occasion</li>
+                    <li>Destination haldi capability</li>
+                    <li>Private venue sourcing</li>
+                    <li>Custom set design & installations</li>
+                    <li>Luxury guest gifting</li>
+                    <li>Bespoke stationery and invitations</li>
+                    <li>Dedicated personal planner</li>
+                    <li>Food: private chef tasting menu, multiple live stations, sculptural cake, midnight dessert bar & full hospitality service</li>
+                </ul>
+                <div class="svc-pkg-foot">
+                    <a href="../contact.html" class="btn btn-outline-white" id="pkg-statement-cta">Discuss Your Vision</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     6. TESTIMONIALS — Card-stack layout (reference 3)
+     ═══════════════════════════════════════════════ -->
+<section class="haldi-testi-section" aria-label="Haldi Party Reviews">
+    <div class="haldi-testi-inner">
+        <div class="haldi-testi-header reveal">
+            <span class="s-label">Haldi Party Reviews</span>
+            <h2>What Our Clients Say</h2>
+            <p>Real words from guests who trusted Opulia to design their most memorable haldi celebrations.</p>
+        </div>
+
+        <div class="haldi-testi-layout reveal rd1">
+            <button class="haldi-testi-arrow" id="haldiTestiPrev" aria-label="Previous review">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            
+            <div class="haldi-testi-track-wrap">
+                <div class="haldi-testi-track" id="haldiTestiTrack">
+                    <!-- Cards will be injected by JS -->
+                </div>
+            </div>
+
+            <button class="haldi-testi-arrow" id="haldiTestiNext" aria-label="Next review">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="haldi-testi-dots" id="haldiTestiDots">
+            <!-- Dots will be injected by JS -->
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     7. CTA — White background
+     ═══════════════════════════════════════════════ -->
+<section class="haldi-cta-section" aria-label="Book haldi consultation">
+    <span class="s-label">Let's Create Together</span>
+    <h2>Ready to Plan Your Haldi?</h2>
+    <p>Tell us how you want it to feel. We'll design the rest — every detail, curated around you.</p>
+    <div class="haldi-cta-actions">
+        <a href="../contact.html" class="btn btn-green" id="cta-book-btn">Book a Consultation</a>
+        <a href="../contact.html" class="btn btn-outline-green" id="cta-tell-btn">Tell Us About Your Event</a>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="site-footer" aria-label="Footer">
+    <div class="s-inner">
+        <div class="footer-top">
+            <div>
+                <span class="foot-brand-logo">OPULIA</span>
+                <p class="foot-brand-desc">A premium event design and planning studio crafting bespoke celebrations for those who understand that how an event feels is everything.</p>
+            </div>
+            <div class="foot-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="haldi.html">Haldi</a></li>
+                    <li><a href="mehendi.html">Mehendi</a></li>
+                    <li><a href="nikkah.html">Nikkah</a></li>
+                    <li><a href="anniversary.html">Anniversary</a></li>
+                    <li><a href="haldi.html">Haldi</a></li>
+                    <li><a href="reception.html">Reception</a></li>
+                    <li><a href="bachelorette.html">Bachelorette</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="../index.html#about">About Opulia</a></li>
+                    <li><a href="../index.html#portfolio">Portfolio</a></li>
+                    <li><a href="../services.html">All Services</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="foot-col">
+                <h5>Connect</h5>
+                <div class="foot-social">
+                    <a href="#" class="foot-social-link">Instagram</a>
+                    <a href="mailto:hello@opulia.com" class="foot-social-link">hello@opulia.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Opulia. All rights reserved.</p>
+            <p>Designed with intention. Built for celebration.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Event video">
+    <div class="v-modal-wrap">
+        <button class="v-modal-close" id="modalClose" aria-label="Close">✕ Close</button>
+        <video id="modalVideo" controls></video>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* ── 1. HEADER SCROLL ── */
+    const header = document.getElementById('site-header');
+    if (header) {
+        const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 60);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    }
+
+    /* ── 2. MOBILE MENU ── */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileNav  = document.getElementById('mobileNav');
+    const mobileLinks = document.querySelectorAll('.m-link, .m-cta');
+    const closeMenu = () => {
+        mobileNav  && mobileNav.classList.remove('open');
+        hamburger  && hamburger.classList.remove('open');
+        hamburger  && hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    };
+    if (hamburger && mobileNav) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen.toString());
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+        mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
+    }
+
+    /* ── 3. SCROLL REVEAL ── */
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && reveals.length) {
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+        reveals.forEach(el => obs.observe(el));
+    } else {
+        reveals.forEach(el => el.classList.add('visible'));
+    }
+
+    /* ── 4. PROCESS TIMELINE (sticky scroll, same as homepage) ── */
+    const processSection  = document.getElementById('haldi-process');
+    const processWrap     = document.getElementById('haldiProcessTimelineWrap');
+    const hptFill         = document.getElementById('haldiHptFill');
+    const hptDots         = [0,1,2,3].map(i => document.getElementById('haldiDot' + i));
+    const hptSteps        = document.querySelectorAll('.haldi-hpt-step');
+
+    if (processSection && processWrap && hptFill) {
+        const updateTimeline = () => {
+            const rect = processSection.getBoundingClientRect();
+            const winH = window.innerHeight;
+            const scrollRange = processSection.offsetHeight - winH;
+
+            if (scrollRange <= 0) {
+                hptFill.style.width = '100%';
+                hptDots.forEach(d => d && d.classList.add('active'));
+                hptSteps.forEach(s => s && s.classList.add('active'));
+                return;
+            }
+
+            const scrolled = -rect.top;
+            const rawPct   = Math.max(0, Math.min(1, scrolled / scrollRange));
+            const startBuf = 0.02;
+            const endBuf   = 0.88;
+            const fillPct  = Math.max(0, Math.min(1, (rawPct - startBuf) / (endBuf - startBuf)));
+
+            hptFill.style.width = (fillPct * 100) + '%';
+
+            const thresholds = [0.0, 0.32, 0.65, 0.98];
+            hptDots.forEach((dot, idx) => {
+                if (!dot) return;
+                const isActive = fillPct >= thresholds[idx];
+                dot.classList.toggle('active', isActive);
+                if (hptSteps[idx]) {
+                    hptSteps[idx].classList.toggle('active', isActive);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', updateTimeline, { passive: true });
+        window.addEventListener('resize', updateTimeline);
+        setTimeout(updateTimeline, 120);
+    }
+
+    /* ── 5. SMOOTH ANCHOR SCROLL ── */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const id = this.getAttribute('href');
+            const target = id === '#' ? null : document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            closeMenu();
+            const offset = header ? header.offsetHeight : 0;
+            window.scrollTo({
+                top: target.getBoundingClientRect().top + window.scrollY - offset,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    /* ── 6. TESTIMONIALS CAROUSEL ── */
+    const testimonials = [
+        {
+            quote:  "My Haldi was everything I didn't know I needed. I walked into my own party and genuinely gasped. Opulia had transformed the venue into something from a film.",
+            name:   'Sara M.',
+            meta:   'Haldi · Dubai',
+            initial:'S'
+        },
+        {
+            quote:  "Our Haldi ceremony has never felt so beautiful. Opulia took my simple idea and turned it into the most stunning evening — guests are still talking about it months later.",
+            name:   'Amira K.',
+            meta:   'Haldi · Abu Dhabi',
+            initial:'A'
+        },
+        {
+            quote:  "I told Opulia I wanted to feel like the main character. They delivered exactly that — and then some. The most magical night of my life.",
+            name:   'Layla R.',
+            meta:   'Haldi · London',
+            initial:'L'
+        }
+    ];
+
+    let currentTesti = 1; // Middle item active by default
+    const trackEl = document.getElementById('haldiTestiTrack');
+    const dotsEl  = document.getElementById('haldiTestiDots');
+    const prevBtn = document.getElementById('haldiTestiPrev');
+    const nextBtn = document.getElementById('haldiTestiNext');
+
+    if (trackEl && dotsEl) {
+        // Generate Cards
+        trackEl.innerHTML = testimonials.map((t, i) => `
+            <div class="haldi-testi-card ${i === currentTesti ? 'active' : ''}" data-idx="${i}">
+                <div class="haldi-testi-quote-icon">“</div>
+                <blockquote>"${t.quote}"</blockquote>
+                <div class="haldi-testi-author-row">
+                    <div class="haldi-testi-avatar">${t.initial}</div>
+                    <div class="haldi-testi-author-info">
+                        <div class="haldi-testi-author-name">${t.name}</div>
+                        <div class="haldi-testi-author-meta">${t.meta}</div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // Generate Dots
+        dotsEl.innerHTML = testimonials.map((_, i) => `
+            <div class="haldi-testi-dot ${i === currentTesti ? 'active' : ''}" data-idx="${i}"></div>
+        `).join('');
+
+        const cards = trackEl.querySelectorAll('.haldi-testi-card');
+        const dots  = dotsEl.querySelectorAll('.haldi-testi-dot');
+
+        const updateCarousel = (idx) => {
+            currentTesti = idx;
+            cards.forEach((card, i) => {
+                card.classList.toggle('active', i === currentTesti);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentTesti);
+            });
+            
+            // Re-order visually so the active card is always in the center
+            // (Assuming exactly 3 items: we put the active one in the center)
+            const leftIdx = (currentTesti - 1 + cards.length) % cards.length;
+            const rightIdx = (currentTesti + 1) % cards.length;
+            
+            cards[leftIdx].style.order = 1;
+            cards[currentTesti].style.order = 2;
+            cards[rightIdx].style.order = 3;
+        };
+
+        // Initialize orders
+        updateCarousel(currentTesti);
+
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+            updateCarousel((currentTesti - 1 + testimonials.length) % testimonials.length);
+        });
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+            updateCarousel((currentTesti + 1) % testimonials.length);
+        });
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                updateCarousel(parseInt(dot.dataset.idx));
+            });
+        });
+    }
+
+    /* ── 7. VIDEO MODAL ── */
+    const modal      = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalClose = document.getElementById('modalClose');
+
+    const closeModal = () => {
+        if (!modal || !modalVideo) return;
+        modal.classList.remove('open');
+        modalVideo.pause();
+        modalVideo.src = '';
+        document.body.style.overflow = '';
+    };
+
+    modalClose && modalClose.addEventListener('click', closeModal);
+    modal && modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+});
+</script>
+
+</body>
+</html>
