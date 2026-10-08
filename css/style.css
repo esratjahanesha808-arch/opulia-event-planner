@@ -1,4 +1,4 @@
-﻿/* ============================================
+/* ============================================
    OPULIA — COMPLETE STYLE SYSTEM
    Two-tone: #17230f (green) ↔ #F9F8F6 (white)
    ============================================ */
@@ -1790,28 +1790,24 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* YouTube iframe video fixes */
-iframe.hero-video {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    pointer-events: none; /* Prevents clicking/pausing the hero video */
+.hero-video-wrap {
+    overflow: hidden;
 }
 
-@media (min-aspect-ratio: 16/9) {
-    iframe.hero-video {
-        height: 300%;
-        top: -100%;
-    }
-}
-@media (max-aspect-ratio: 16/9) {
-    iframe.hero-video {
-        width: 300%;
-        left: -100%;
-    }
+iframe.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 56.25vw; /* 16:9 aspect ratio */
+    min-height: 100vh;
+    min-width: 177.78vh; /* 16:9 aspect ratio */
+    pointer-events: none; /* Prevents clicking/pausing the hero video */
 }
 
 iframe.portfolio-video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    aspect-ratio: 16/9;
 }
