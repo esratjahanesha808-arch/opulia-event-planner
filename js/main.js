@@ -358,22 +358,6 @@ function initApp() {
             alignTrack();
             updateTimeline();
         }, 120);
-
-        // ── Mobile: IntersectionObserver to stagger-reveal each step ──
-        if (window.matchMedia('(max-width: 600px)').matches && hptSteps.length) {
-            const mobileStepObs = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        // Also activate corresponding dot
-                        const idx = Array.from(hptSteps).indexOf(entry.target);
-                        if (hptDots[idx]) hptDots[idx].classList.add('active');
-                        mobileStepObs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.25, rootMargin: '0px 0px -50px 0px' });
-            hptSteps.forEach(step => mobileStepObs.observe(step));
-        }
     }
 
 
