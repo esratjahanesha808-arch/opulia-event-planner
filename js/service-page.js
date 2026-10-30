@@ -8,7 +8,7 @@
    5. Video modal
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initServicePage() {
 
     /* ─── 1. HEADER SCROLL ─── */
     const header = document.getElementById('site-header');
@@ -27,15 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger  && hamburger.classList.remove('open');
         hamburger  && hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
+        document.body.classList.remove('nav-open');
     };
     if (hamburger && mobileNav) {
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
             const isOpen = mobileNav.classList.toggle('open');
             hamburger.classList.toggle('open', isOpen);
             hamburger.setAttribute('aria-expanded', isOpen.toString());
             document.body.style.overflow = isOpen ? 'hidden' : '';
+            document.body.classList.toggle('nav-open', isOpen);
         });
         mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) closeMenu();
+        });
     }
 
     /* ─── 3. HORIZONTAL PROCESS — scroll-linked bar fill ─── */
@@ -117,5 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
     modal && modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-});
+}
 
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initServicePage);
+} else {
+    initServicePage();
+}

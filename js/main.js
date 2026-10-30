@@ -1,4 +1,4 @@
-﻿/* ===============================================
+/* ===============================================
    OPULIA — main.js
    All interactive behaviour:
    1. Header scroll state
@@ -9,7 +9,7 @@
    6. Contact form
    =============================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
 
     /* ─────────────────────────────────────────────
        1. HEADER SCROLL STATE
@@ -40,16 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger  && hamburger.classList.remove('open');
         hamburger  && hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
+        document.body.classList.remove('nav-open');
     };
 
     if (hamburger && mobileNav) {
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
             const isOpen = mobileNav.classList.toggle('open');
             hamburger.classList.toggle('open', isOpen);
             hamburger.setAttribute('aria-expanded', isOpen.toString());
             document.body.style.overflow = isOpen ? 'hidden' : '';
+            document.body.classList.toggle('nav-open', isOpen);
         });
         mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) closeMenu();
+        });
     }
 
 
@@ -352,6 +358,22 @@ document.addEventListener('DOMContentLoaded', () => {
             alignTrack();
             updateTimeline();
         }, 120);
+
+        // ── Mobile: IntersectionObserver to stagger-reveal each step ──
+        if (window.matchMedia('(max-width: 600px)').matches && hptSteps.length) {
+            const mobileStepObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Also activate corresponding dot
+                        const idx = Array.from(hptSteps).indexOf(entry.target);
+                        if (hptDots[idx]) hptDots[idx].classList.add('active');
+                        mobileStepObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.25, rootMargin: '0px 0px -50px 0px' });
+            hptSteps.forEach(step => mobileStepObs.observe(step));
+        }
     }
 
 
@@ -530,4 +552,10 @@ document.addEventListener('DOMContentLoaded', () => {
         countEls.forEach(el => countObs.observe(el));
     }
 
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}

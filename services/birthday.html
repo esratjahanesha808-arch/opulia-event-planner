@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -583,22 +583,122 @@
         @media (max-width: 1100px) {
             .bday-desc-inner { grid-template-columns: 1fr; gap: 3.5rem; }
             .bday-desc-right { position: static; }
-            .bday-collage { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 240px 240px; }
-            .bday-collage-item.tall { grid-row: span 1; }
-            .bday-testi-layout { flex-direction: column; gap: 3rem; }
-            .bday-testi-stack-col { width: 100%; }
+            .bday-desc-img-accent { right: 0; bottom: -1.5rem; width: 45%; }
             .bday-work-head { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-        }
-        @media (max-width: 700px) {
-            .bday-hero-title { font-size: 2.8rem; }
-            .bday-collage { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .bday-collage-item { height: 260px; }
-            .bday-collage-item.wide { grid-column: span 1; }
             .bday-process-section { height: auto; }
-            .bday-process-sticky { position: relative; height: auto; padding: 6rem 0; }
-            .bday-hpt-steps { flex-wrap: wrap; justify-content: flex-start; gap: 2rem; }
-            .bday-hpt-step { opacity: 1; flex: 0 0 calc(50% - 1rem); }
-            .bday-testi-card-front { width: 280px; }
+            .bday-process-sticky { position: relative; height: auto; padding: 5rem 0; }
+            .bday-hpt-track { display: none; }
+            .bday-hpt-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .bday-hpt-step { opacity: 1; max-width: 100%; }
+            .bday-hpt-dot { background: #2d4a1a; border-color: #2d4a1a; }
+            /* ── Collage: 3-col scaled for tablet ── */
+            .bday-collage {
+                grid-template-rows: 240px 240px 240px;
+                gap: 8px;
+            }
+        }
+        @media (max-width: 768px) {
+            /* ── Collage: Clean 2-column luxury editorial grid (NO GAPS) ── */
+            .bday-collage {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                grid-template-rows: auto !important;
+                grid-template-areas: none !important;
+                gap: 8px !important;
+            }
+            .bday-collage-item {
+                position: relative !important;
+                overflow: hidden !important;
+                width: 100% !important;
+                min-height: 0 !important;
+                border-radius: 2px !important;
+            }
+            .bday-collage-item img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                display: block !important;
+            }
+            .bday-col-a {
+                grid-column: 1 / -1 !important;
+                grid-row: auto !important;
+                aspect-ratio: 16 / 10 !important;
+                height: auto !important;
+            }
+            .bday-col-b,
+            .bday-col-c,
+            .bday-col-d,
+            .bday-col-e,
+            .bday-col-f,
+            .bday-col-g {
+                grid-column: span 1 !important;
+                grid-row: auto !important;
+                aspect-ratio: 1 / 1 !important;
+                height: auto !important;
+                display: block !important;
+            }
+
+            .bday-hero-title { font-size: clamp(2.2rem, 7vw, 3.2rem); }
+            .bday-desc-img-accent { display: none; }
+            .bday-testi-layout {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.6rem;
+            }
+            .bday-testi-arrow {
+                width: 38px;
+                height: 38px;
+                flex-shrink: 0;
+            }
+            .bday-testi-track-wrap {
+                padding: 1rem 0;
+            }
+            .bday-testi-card {
+                flex: 0 0 min(280px, calc(100vw - 7rem));
+                padding: 2rem 1.4rem;
+            }
+            .bday-testi-card blockquote {
+                font-size: 0.85rem;
+                line-height: 1.55;
+            }
+        }
+        @media (max-width: 600px) {
+            .bday-process-sticky { padding: 4rem 0; }
+            /* Vertical process animation */
+            .bday-hpt-steps {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                position: relative;
+                padding-left: 2.8rem;
+            }
+            .bday-hpt-steps::before {
+                content: '';
+                position: absolute;
+                left: 6px;
+                top: 8px;
+                bottom: 8px;
+                width: 2px;
+                background: rgba(249,248,246,0.12);
+                z-index: 0;
+            }
+            .bday-hpt-step {
+                position: relative;
+                padding: 0 0 2.5rem 0;
+                opacity: 0;
+                transform: translateY(14px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+            .bday-hpt-step.active { opacity: 1; transform: translateY(0); }
+            .bday-hpt-dot {
+                position: absolute;
+                left: -2.8rem;
+                top: 3px;
+                z-index: 2;
+            }
+            .bday-hpt-step:last-child { padding-bottom: 0; }
+            .svc-pkg-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -609,8 +709,8 @@
     <div class="nav-wrap">
         <nav class="main-nav" aria-label="Primary">
             <a href="../index.html#services">Services</a>
-            <a href="../services.html">All Services</a>
-            <a href="../index.html#portfolio">Portfolio</a>
+            <a href="../index.html#packages">Packages</a>
+            <a href="../portfolio.html">Portfolio</a>
             <a href="../index.html#about">About</a>
         </nav>
         <a href="../index.html" class="brand-logo" aria-label="Opulia homepage">OPULIA</a>
@@ -624,8 +724,8 @@
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
     <a href="../index.html#services" class="m-link">Services</a>
-    <a href="../services.html" class="m-link">All Services</a>
-    <a href="../index.html#portfolio" class="m-link">Portfolio</a>
+    <a href="../index.html#packages" class="m-link">Packages</a>
+    <a href="../portfolio.html" class="m-link">Portfolio</a>
     <a href="../index.html#about" class="m-link">About</a>
     <a href="../contact.html" class="m-cta">Book a Consultation</a>
 </nav>
@@ -732,7 +832,7 @@
                 <p>Real birthday events curated and executed by Opulia — each one a unique story.</p>
             </div>
             <div class="bday-work-head-right">
-                <a href="../services.html" class="bday-view-more-btn" id="work-view-more">
+                <a href="../portfolio.html" class="bday-view-more-btn" id="work-view-more">
                     View More <span class="arrow">→</span>
                 </a>
             </div>
@@ -925,8 +1025,8 @@
                 <h5>Company</h5>
                 <ul>
                     <li><a href="../index.html#about">About Opulia</a></li>
-                    <li><a href="../index.html#portfolio">Portfolio</a></li>
-                    <li><a href="../services.html">All Services</a></li>
+                    <li><a href="../index.html#process">Our Process</a></li>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                 </ul>
             </div>
@@ -954,7 +1054,7 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+function initServicePage() {
 
     /* ── 1. HEADER SCROLL ── */
     const header = document.getElementById('site-header');
@@ -973,15 +1073,21 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger  && hamburger.classList.remove('open');
         hamburger  && hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
+        document.body.classList.remove('nav-open');
     };
     if (hamburger && mobileNav) {
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
             const isOpen = mobileNav.classList.toggle('open');
             hamburger.classList.toggle('open', isOpen);
             hamburger.setAttribute('aria-expanded', isOpen.toString());
             document.body.style.overflow = isOpen ? 'hidden' : '';
+            document.body.classList.toggle('nav-open', isOpen);
         });
         mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) closeMenu();
+        });
     }
 
     /* ── 3. SCROLL REVEAL ── */
@@ -1042,6 +1148,19 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', updateTimeline, { passive: true });
         window.addEventListener('resize', updateTimeline);
         setTimeout(updateTimeline, 120);
+
+        // ── Mobile: stagger-reveal steps via IntersectionObserver ──
+        if (window.matchMedia('(max-width: 600px)').matches && hptSteps.length) {
+            const mobileObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        mobileObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+            hptSteps.forEach(step => mobileObs.observe(step));
+        }
     }
 
     /* ── 5. SMOOTH ANCHOR SCROLL ── */
@@ -1164,7 +1283,12 @@ document.addEventListener('DOMContentLoaded', () => {
     modal && modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-});
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initServicePage);
+} else {
+    initServicePage();
+}
 </script>
 
 </body>

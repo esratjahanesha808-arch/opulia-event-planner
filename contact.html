@@ -26,16 +26,18 @@
 
         /* ── HEADER (matches inner-page style) ── */
         .contact-page-wrap {
-            padding-top: 80px;
+            padding-top: 72px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background: var(--white);
         }
 
         /* ── HERO STRIP ── */
         .contact-hero {
             background: var(--green);
             padding: 5rem 6% 4rem;
+            margin-top: -1px;
             position: relative;
             overflow: hidden;
         }
@@ -224,7 +226,8 @@
         }
 
         .cs-what-happens {
-            border: 1px solid rgba(23,35,15,0.1);
+            border: 1px solid rgba(23,35,15,0.15);
+            border-left: 3px solid var(--green);
             padding: 1.8rem;
         }
         .cs-wh-title {
@@ -268,11 +271,11 @@
             align-items: center;
             justify-content: space-between;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(23,35,15,0.08);
+            border-bottom: 1px solid rgba(23,35,15,0.12);
             text-decoration: none;
             transition: all 0.3s;
         }
-        .cs-contact-link:first-child { border-top: 1px solid rgba(23,35,15,0.08); }
+        .cs-contact-link:first-child { border-top: 1px solid rgba(23,35,15,0.12); }
         .cs-link-label {
             font-size: 0.62rem;
             text-transform: uppercase;
@@ -368,7 +371,7 @@
         .form-group textarea {
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(23,35,15,0.15);
+            border-bottom: 1.5px solid var(--green);
             padding: 0.85rem 0;
             font-family: var(--font-sans);
             font-size: 0.92rem;
@@ -399,7 +402,7 @@
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(23,35,15,0.15);
+            border-bottom: 1.5px solid var(--green);
             padding: 0.85rem 2rem 0.85rem 0;
             font-family: var(--font-sans);
             font-size: 0.92rem;
@@ -432,7 +435,7 @@
             left: 0;
             right: 0;
             background: var(--white);
-            border: 1px solid rgba(23,35,15,0.12);
+            border: 1.5px solid var(--green);
             border-top: none;
             z-index: 200;
             display: none;
@@ -487,15 +490,15 @@
             align-items: center;
             gap: 0.4rem;
             padding: 1rem 0.5rem;
-            border: 1px solid rgba(23,35,15,0.12);
+            border: 1.5px solid var(--green);
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             position: relative;
         }
         .event-radio-label:hover {
-            border-color: rgba(23,35,15,0.3);
-            background: rgba(23,35,15,0.02);
+            border-color: var(--green);
+            background: rgba(23,35,15,0.04);
         }
         .event-radio:checked + .event-radio-label {
             border-color: var(--green);
@@ -648,7 +651,9 @@
                 gap: 3rem;
             }
         }
+
         @media (max-width: 900px) {
+            .contact-hero { padding: 3.5rem 6% 3rem; }
             .contact-hero-inner { grid-template-columns: 1fr; gap: 2rem; }
             .contact-main {
                 grid-template-columns: 1fr;
@@ -659,6 +664,7 @@
             .contact-steps-bar { display: none; }
         }
         @media (max-width: 600px) {
+            .contact-hero-title { font-size: clamp(2.2rem, 7vw, 3rem); }
             .form-grid { grid-template-columns: 1fr; }
             .form-group.span-2 { grid-column: span 1; }
             .contact-hero-details { flex-wrap: wrap; gap: 1.5rem; }
@@ -1082,25 +1088,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('site-header');
     if (header) {
         header.classList.add('scrolled');
-    }
-
-    /* ── Mobile menu ── */
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobileNav');
-    if (hamburger && mobileNav) {
-        hamburger.addEventListener('click', () => {
-            const isOpen = mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('open', isOpen);
-            hamburger.setAttribute('aria-expanded', isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
-        mobileNav.querySelectorAll('.m-link, .m-cta').forEach(l =>
-            l.addEventListener('click', () => {
-                mobileNav.classList.remove('open');
-                hamburger.classList.remove('open');
-                document.body.style.overflow = '';
-            })
-        );
     }
 
     /* ── Custom select dropdowns ── */

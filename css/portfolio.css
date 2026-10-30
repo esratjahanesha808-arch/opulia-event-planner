@@ -50,6 +50,25 @@
 .nav-active { color: #c8a96e !important; }
 .main-nav .nav-active::after { transform: scaleX(1) !important; background: #c8a96e; }
 
+/* ── Portfolio CTA button hover fixes ── */
+.pf-cta-section .btn-green:hover {
+    background: #243318;
+    color: #F9F8F6;
+    border-color: #243318;
+}
+.pf-cta-section .btn-outline-green:hover {
+    background: #17230f;
+    color: #F9F8F6;
+    border-color: #17230f;
+}
+
+/* Inner-page nav CTA hover (non-scrolled, transparent header) */
+.inner-page-header:not(.scrolled) .nav-cta-btn:hover {
+    background: rgba(249,248,246,0.15);
+    color: #F9F8F6;
+    border-color: rgba(249,248,246,0.7);
+}
+
 
 /* ============================================================
    SECTION 1: HERO
@@ -342,15 +361,17 @@
     .pf-gallery-label { position: static; }
     .pf-gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 175px; }
     .pf-gitem--tall { grid-row: span 1; }
-    .pf-strip-item { width: 220px; }
+    .pf-strip-item { width: clamp(280px, 72vw, 380px); }
     .pf-citem { width: 210px; height: 150px; }
     .pf-truth-bg { background-attachment: scroll; }
     .pf-truth-content { padding: 5rem 5%; }
 }
 
 @media (max-width: 480px) {
+    .pf-hero-title { font-size: clamp(2.2rem, 8vw, 3.2rem); }
+    .pf-hero-sub { font-size: 0.85rem; }
     .pf-gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
     .pf-gitem--wide, .pf-gitem--tall { grid-column: span 1; grid-row: span 1; }
-    .pf-strip-item { width: 170px; }
+    .pf-strip-item { width: clamp(260px, 82vw, 340px); }
     .pf-citem { width: 165px; height: 118px; }
 }

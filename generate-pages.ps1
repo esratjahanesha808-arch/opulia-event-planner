@@ -181,8 +181,8 @@ foreach ($s in $services) {
     <div class="nav-wrap">
         <nav class="main-nav" aria-label="Primary">
             <a href="../index.html#services">Services</a>
-            <a href="../services.html">All Services</a>
-            <a href="../index.html#portfolio">Portfolio</a>
+            <a href="../index.html#packages">Packages</a>
+            <a href="../portfolio.html">Portfolio</a>
             <a href="../index.html#about">About</a>
         </nav>
         <a href="../index.html" class="brand-logo" aria-label="Opulia homepage">OPULIA</a>
@@ -196,8 +196,8 @@ foreach ($s in $services) {
 </header>
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
     <a href="../index.html#services" class="m-link">Services</a>
-    <a href="../services.html" class="m-link">All Services</a>
-    <a href="../index.html#portfolio" class="m-link">Portfolio</a>
+    <a href="../index.html#packages" class="m-link">Packages</a>
+    <a href="../portfolio.html" class="m-link">Portfolio</a>
     <a href="../index.html#about" class="m-link">About</a>
     <a href="../contact.html" class="m-cta">Book a Consultation</a>
 </nav>
@@ -212,7 +212,7 @@ foreach ($s in $services) {
         <nav class="svc-breadcrumb" aria-label="Breadcrumb">
             <a href="../index.html">Home</a>
             <span class="sep">/</span>
-            <a href="../services.html">Services</a>
+            <a href="../index.html#services">Services</a>
             <span class="sep">/</span>
             <span class="bc-current">$($s.title)</span>
         </nav>
@@ -281,8 +281,8 @@ $stepHtml        </div>
             </div>
             <div class="svc-video-sidebar">
                 <span class="svc-video-sidebar-label">More from our portfolio</span>
-                <a href="../services.html" class="svc-view-more-btn">
-                    View All Services <span class="arrow">→</span>
+                <a href="../portfolio.html" class="svc-view-more-btn">
+                    View More Work <span class="arrow">→</span>
                 </a>
                 <a href="../contact.html" class="svc-view-more-btn">
                     Book a Consultation <span class="arrow">→</span>
@@ -428,8 +428,8 @@ $pkgBList                </ul>
                 <h5>Company</h5>
                 <ul>
                     <li><a href="../index.html#about">About Opulia</a></li>
-                    <li><a href="../index.html#portfolio">Portfolio</a></li>
-                    <li><a href="../services.html">All Services</a></li>
+                    <li><a href="../index.html#process">Our Process</a></li>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                 </ul>
             </div>
