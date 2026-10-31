@@ -8,3 +8,10 @@ asset/cetagory/
 asset/portfolio/
 asset/testimonials images/
 mehendi/*.jpg
+
+# Environment files & API keys
+.env
+.env.local
+.env.*.local
+js/env.local.js
+

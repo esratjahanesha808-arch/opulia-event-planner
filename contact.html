@@ -1081,6 +1081,8 @@
 
 </div><!-- /.contact-page-wrap -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/env.js"></script>
 <script src="js/main.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -1148,36 +1150,104 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ── Form submission ── */
+    // 1. Initialize Supabase Client
+    const SUPABASE_URL = window.ENV_SUPABASE_URL || 'YOUR_SUPABASE_PROJECT_URL';
+    const SUPABASE_ANON_KEY = window.ENV_SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY';
+    let supabase = null;
+    if (window.supabase && SUPABASE_URL && SUPABASE_URL !== 'YOUR_SUPABASE_PROJECT_URL') {
+        try {
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        } catch (e) {
+            console.warn('Initial Supabase client creation skipped or deferred:', e);
+        }
+    }
+
     const form = document.getElementById('opulia-contact-form');
     const confirmation = document.getElementById('form-confirmation');
     const submitBtn = document.getElementById('contact-submit-btn');
 
-    if (form && confirmation && submitBtn) {
-        form.addEventListener('submit', (e) => {
+    if (form && submitBtn) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const name = document.getElementById('contact-name').value.trim();
-            const email = document.getElementById('contact-email').value.trim();
-            const message = document.getElementById('contact-message').value.trim();
+            // Extract values
+            const name = document.getElementById('contact-name')?.value.trim();
+            const email = document.getElementById('contact-email')?.value.trim();
+            const phone = document.getElementById('contact-phone')?.value.trim();
+            const location = document.getElementById('contact-location')?.value.trim();
 
+            const eventTypeEl = document.querySelector('input[name="event_type"]:checked');
+            const eventType = eventTypeEl ? eventTypeEl.value : 'wedding';
+
+            const eventDate = document.getElementById('contact-date')?.value || null;
+            const guestCount = document.getElementById('contact-guests')?.value || null;
+            const selectedPackage = document.getElementById('contact-package')?.value || null;
+            const budget = document.getElementById('contact-budget')?.value || null;
+            const message = document.getElementById('contact-message')?.value.trim();
+            const referral = document.getElementById('contact-heard')?.value || null;
+
+            // Validation
             if (!name || !email || !message) {
                 [document.getElementById('contact-name'), document.getElementById('contact-email'), document.getElementById('contact-message')].forEach(el => {
-                    if (!el.value.trim()) {
+                    if (el && !el.value.trim()) {
                         el.style.borderBottomColor = '#c0392b';
                         setTimeout(() => el.style.borderBottomColor = '', 2000);
                     }
                 });
+                alert('Please fill in your name, email, and vision message.');
                 return;
             }
 
-            submitBtn.textContent = 'Sending…';
+            // Lazy initialize Supabase client if not yet ready
+            if (!supabase) {
+                const currentUrl = window.ENV_SUPABASE_URL || SUPABASE_URL;
+                const currentKey = window.ENV_SUPABASE_ANON_KEY || SUPABASE_ANON_KEY;
+                if (window.supabase && currentUrl && currentUrl !== 'YOUR_SUPABASE_PROJECT_URL' && currentKey && currentKey !== 'YOUR_SUPABASE_ANON_KEY') {
+                    supabase = window.supabase.createClient(currentUrl, currentKey);
+                } else {
+                    alert('Supabase is not configured yet. Please configure NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in your .env or js/env.js file.');
+                    return;
+                }
+            }
+
+            // UI Loading state
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.textContent = 'Securing Consultation...';
             submitBtn.disabled = true;
 
-            setTimeout(() => {
-                form.style.display = 'none';
-                confirmation.classList.add('visible');
-                confirmation.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 1200);
+            try {
+                // Call Postgres stored procedure
+                const { data, error } = await supabase.rpc('submit_public_inquiry', {
+                    p_name: name,
+                    p_email: email,
+                    p_phone: phone || null,
+                    p_location: location || null,
+                    p_event_type: eventType,
+                    p_event_date: eventDate || null,
+                    p_guest_count: guestCount || null,
+                    p_package: selectedPackage || null,
+                    p_budget: budget || null,
+                    p_message: message,
+                    p_referral: referral || null,
+                });
+
+                if (error) throw error;
+
+                // On Success: Reveal confirmation panel
+                if (confirmation) {
+                    form.style.display = 'none';
+                    confirmation.classList.add('visible');
+                    confirmation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    alert('Thank you! Your appointment inquiry has been received.');
+                    form.reset();
+                }
+            } catch (err) {
+                console.error('Submission failed:', err);
+                alert('We could not send your inquiry. Please try again or reach out to us directly.');
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
         });
     }
 });
