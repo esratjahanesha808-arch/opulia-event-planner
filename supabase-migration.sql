@@ -47,13 +47,17 @@ UPDATE public.events e
 SET 
     client_name = COALESCE(e.client_name, c.full_name),
     client_email = COALESCE(e.client_email, c.email),
-    client_phone = COALESCE(e.client_phone, c.phone),
-    description = COALESCE(e.description, b.vision_message, b.description),
+    client_phone = COALESCE(e.client_phone, c.phone)
+FROM public.clients c
+WHERE e.client_id = c.id;
+
+UPDATE public.events e
+SET 
+    description = COALESCE(e.description, b.description, b.vision_message),
     package_interest = COALESCE(e.package_interest, b.package_interest),
     budget_range = COALESCE(e.budget_range, b.budget_range)
-FROM public.clients c
-LEFT JOIN public.bookings b ON b.id = e.booking_id
-WHERE e.client_id = c.id;
+FROM public.bookings b
+WHERE e.booking_id = b.id;
 
 -- 4. UPDATE THE SECURE INGESTION STORED PROCEDURE
 -- Ensures every future submission connects Name, Email, Phone, Location, Description, Date, Budget, Package to ALL tables
