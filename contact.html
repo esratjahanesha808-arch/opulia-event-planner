@@ -1151,10 +1151,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ── Form submission ── */
     // 1. Initialize Supabase Client
-    const SUPABASE_URL = window.ENV_SUPABASE_URL || 'YOUR_SUPABASE_PROJECT_URL';
-    const SUPABASE_ANON_KEY = window.ENV_SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY';
+    const SUPABASE_URL = window.ENV_SUPABASE_URL || 'https://dzfnvsmzbwxjcpctkics.supabase.co';
+    const SUPABASE_ANON_KEY = window.ENV_SUPABASE_ANON_KEY || 'sb_publishable_PIg-TnGs_BtmEKzxus2Ahw_HZpRTmKj';
     let supabase = null;
-    if (window.supabase && SUPABASE_URL && SUPABASE_URL !== 'YOUR_SUPABASE_PROJECT_URL') {
+    if (window.supabase && SUPABASE_URL) {
         try {
             supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         } catch (e) {
@@ -1202,10 +1202,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!supabase) {
                 const currentUrl = window.ENV_SUPABASE_URL || SUPABASE_URL;
                 const currentKey = window.ENV_SUPABASE_ANON_KEY || SUPABASE_ANON_KEY;
-                if (window.supabase && currentUrl && currentUrl !== 'YOUR_SUPABASE_PROJECT_URL' && currentKey && currentKey !== 'YOUR_SUPABASE_ANON_KEY') {
+                if (window.supabase && currentUrl && currentKey) {
                     supabase = window.supabase.createClient(currentUrl, currentKey);
                 } else {
-                    alert('Supabase is not configured yet. Please configure NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in your .env or js/env.js file.');
+                    alert('Supabase client could not be loaded. Please check your network connection.');
                     return;
                 }
             }
@@ -1244,7 +1244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (err) {
                 console.error('Submission failed:', err);
-                alert('We could not send your inquiry. Please try again or reach out to us directly.');
+                alert(err?.message || 'We could not send your inquiry. Please try again or reach out to us directly.');
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
             }
